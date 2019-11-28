@@ -13,7 +13,7 @@ spec:
     - cat
     tty: true
   - name: gcloud-sdk-container
-    image: "google/cloud-sdk"
+    image: google/cloud-sdk
     imagePullPolicy: Always
     command:
     - cat
