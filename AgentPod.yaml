@@ -1,0 +1,37 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: gradle-builder
+spec:
+  serviceAccountName: default
+  containers:
+  - name: builder
+    image: gradle:5.6.2-jdk11
+    imagePullPolicy: Always
+    command:
+    - cat
+    tty: true
+  - name: gcloud-sdk-container
+    image: "google/cloud-sdk"
+    imagePullPolicy: Always
+    command:
+    - cat
+    tty: true
+  - name: docker
+    image: alpine-docker:3.4
+    imagePullPolicy: Always
+    command: [ "/bin/sh", "-c", "--" ]
+    args: [ "while true; do sleep 30; done;" ]
+    volumeMounts:
+      - name: dockersocket
+        mountPath: /var/run/docker.sock
+  - name: kubectl
+    image: kubernetes-deploy:latest
+    imagePullPolicy: Always
+    command: [ "/bin/sh", "-c", "--" ]
+    args: [ "while true; do sleep 30; done;" ]
+  volumes:
+    - name: dockersocket
+      hostPath:
+        path: /var/run/docker.sock
