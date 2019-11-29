@@ -6,14 +6,14 @@ pipeline {
 	}
     agent {
         kubernetes {
-            label 'latamxp-build'
+            label 'gradle-builder'
             yamlFile 'AgentPod.yaml'
         }
     }
     stages {
         stage('Checkout code') {
             steps {
-                container('latamxp-builder') {
+                container('builder') {
                     checkout scm
                 }
             }
