@@ -6,7 +6,7 @@ pipeline {
 	}
     agent {
         kubernetes {
-            label 'gradle-builder'
+            label 'gradle-builde'
             defaultContainer 'gradle-builder'
             yamlFile 'AgentPod.yaml'
         }
