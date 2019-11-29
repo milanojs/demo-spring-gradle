@@ -28,7 +28,7 @@ pipeline {
                                 sh 'mkdir -p endpoints ; chmod 777 -Rv endpoints'
                                 dir("endpoints")
                                     {
-                                        git url: 'ssh://git@coderepocsa.appslatam.com:7999/latamxp/poc-ci-dummy-helloworld-deployment.git', credentialsId: 'db0cef85-68dc-4082-8ff4-a41c0faf82a1'
+                                        git url: 'ssh://git@a.appslatam.com:7999/latamxp/poc-ci-dummy-helloworld-deployment.git', credentialsId: 'db0cef85-68dc-4082-8ff4-a41c0faf82a1'
                                         sh """ 
                                         gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS
                                         gcloud auth list
